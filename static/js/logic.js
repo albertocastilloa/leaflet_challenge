@@ -1,4 +1,4 @@
-var myMap = L.map("map", {
+let myMap = L.map("map", {
     center: [17, -4 ],
     zoom: 2
   }); 
@@ -13,7 +13,7 @@ var myMap = L.map("map", {
   
 
 // Significant Earthquakes - Past 7 Days
-  var json = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
+  let json = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
   
   function getColor(magnitude) {
     return      magnitude >= 6.5  ? '#e23b1b':
@@ -26,11 +26,11 @@ var myMap = L.map("map", {
 //   var array = [];
 
   d3.json(json, function(data) {
-  var earth=data.features;
+  let earth=data.features;
   for (var i = 0; i < earth.length; i++) {
-    var location = [earth[i].geometry.coordinates[1],earth[i].geometry.coordinates[0]]
+    let location = [earth[i].geometry.coordinates[1],earth[i].geometry.coordinates[0]]
 
-    var geojson;
+    let geojson = '';
     geojson = L.circle(location, {
             fillOpacity: 0.75,
             mag: earth[i].properties.mag,
@@ -44,11 +44,11 @@ var myMap = L.map("map", {
 
 });
 
-var legend = L.control({position: 'bottomright'});
+let legend = L.control({position: 'bottomright'});
 
 legend.onAdd = function (map) {
 
-	var div = L.DomUtil.create('div', 'info legend'),
+	let div = L.DomUtil.create('div', 'info legend'),
 		magnitude = [0, 5, 5.5, 6, 6.5],
 		labels = [];
 
